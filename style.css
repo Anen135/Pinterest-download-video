@@ -1,0 +1,56 @@
+/* Общие стили для всего документа */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ff6363, #ffbe7b);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Стили для заголовка */
+h1 {
+  font-size: 1rem;
+  margin: 20px 30px 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: rgb(255,190,123);
+  background: linear-gradient(260deg, #ff1d1d, #6363ff);
+
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Стили для кнопки */
+button {
+  background-color: #fff;
+  color: #ff6363;
+  border: none;
+  padding: 0px 10px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Эффекты наведения для кнопки */
+button:hover {
+  background-color: #ff6363;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+#solutions {
+  min-width: 200px;
+}
