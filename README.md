@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/3b89d4b2-775d-4f28-86fc-2e59a1a1e7e1)Pinterest Video Downloader
+Pinterest Video Downloader
 Это расширение для браузера Chrome позволяет скачивать видео с Pinterest.
 
 Как использовать:
