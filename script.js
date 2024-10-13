@@ -11,23 +11,34 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function getPinterestData(url) {
-    let data = JSON.parse(document.getElementById("__PWS_INITIAL_PROPS__").textContent);
-    let videos = data.initialReduxState.pins[url.split("/").at(-2)].videos.video_list;
-
-    // Информация о разрешениях
     let resolutions = [];
-    if (videos.V_720P) {
-        resolutions.push({ label: "720P", url: videos.V_720P.url });
-    }
-    if (videos.V_480P) {
-        resolutions.push({ label: "480P", url: videos.V_480P.url });
-    }
-    if (videos.V_360P) {
-        resolutions.push({ label: "360P", url: videos.V_360P.url });
+    let data = JSON.parse(document.getElementById("__PWS_INITIAL_PROPS__").textContent);
+    console.log(data)
+    if (data.initialReduxState.pins[Object.keys(data.initialReduxState.pins)[0]] != data.initialReduxState.pins[url.split("/").at(-2)]) console.log("Url is outdated. Please refresh the page.");
+    url = data.initialReduxState.pins[Object.keys(data.initialReduxState.pins)[0]];
+    console.log(url)
+
+    if (url.videos) {
+        console.log("videos");
+        let videos = url.videos.video_list;
+        // Информация о разрешениях
+        for (const key in videos) {
+            if (key.startsWith("V_")) {
+                resolutions.push({ label: key, url: videos[key].url });
+                console.log(videos[key].url, key);
+            }
+        }
+        // Передача информаций о разрешениях в popup.js
+        chrome.runtime.sendMessage({ resolutions: resolutions });
+    } else if (url.images) {
+        // Информация о разрешениях
+        for (const key in url.images) {
+            resolutions.push({ label: key, url: url.images[key].url });
+            console.log(url.images[key].url, key);
+        }
+        chrome.runtime.sendMessage({ resolutions: resolutions.reverse() });
     }
 
-    // Передача информаций о разрешениях в popup.js
-    chrome.runtime.sendMessage({ resolutions: resolutions });
 }
 
 // Обработка ответа от getPinterestData

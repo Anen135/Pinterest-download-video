@@ -26,6 +26,7 @@ h1 {
   background: linear-gradient(260deg, #ff1d1d, #6363ff);
 
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
 }
 
